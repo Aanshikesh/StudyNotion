@@ -1,5 +1,13 @@
 const express = require("express");
 const app = express();
+app.use(cors({
+  origin: 'https://studynotion-alpha-six.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
+// 👉 Handle preflight (OPTIONS) requests
+app.options('*', cors()); // Preflight support
 
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
@@ -52,13 +60,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
 	console.log(`App is running at ${PORT}`)
 })
-// If using Express.js
-const cors = require('cors');
-app.use(cors({
-  origin: 'https://studynotion-alpha-six.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
-
 
 
