@@ -52,4 +52,12 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
 	console.log(`App is running at ${PORT}`)
 })
+// If using Express.js
+const cors = require('cors');
+app.use(cors({
+  origin: 'https://studynotion-alpha-six.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+}));
+
 
